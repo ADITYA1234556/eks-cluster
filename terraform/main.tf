@@ -1,37 +1,10 @@
-# Separate public and private subnets if needed
-data "aws_subnets" "public_subnets" {
-  filter {
-    name   = "tag:Type"
-    values = ["public"]
-  }
-
-  filter {
-    name   = "vpc-id"
-    values = ["vpc-0ede6ede1271b45cc"] # Your VPC ID here
-  }
-}
-
-data "aws_subnets" "private_subnets" {
-  filter {
-    name   = "tag:Type"
-    values = ["private"]
-  }
-
-  filter {
-    name   = "vpc-id"
-    values = ["vpc-0ede6ede1271b45cc"] # Your VPC ID here
-  }
-}
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
   cluster_name    = "my-cluster"
   cluster_version = "1.31"
-  endpoint_public_access  = true
-
-  public_access_cidrs = ["0.0.0.0/0"]
+  cluster_endpoint_public_access = true
 
   cluster_addons = {
     coredns                = {}
