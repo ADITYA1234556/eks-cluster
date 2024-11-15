@@ -69,10 +69,13 @@ jobs:
             aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
             aws-region: ${{ env.AWS_REGION}}
 
-        - name: Get kube config file #get kubeconfig file to deploy a ingress controller
-          id: getconfig
+        - name: Get and test kube config file #get kubeconfig file to deploy a ingress controller
+          id: get and test kube config
           if: steps.apply.outcome == 'success'
-          run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name my-cluster
+          run: |
+            aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name my-cluster
+            kubectl get nodes
+
 
         - name: Install ingress controller
           if: steps.apply.outcome == 'success' && steps.getconfig.outcome == 'success'
