@@ -58,7 +58,7 @@ jobs:
 
         - name: Terraform apply the code
           id: apply #apply only if there is a push event in main branch
-          if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+          #if: github.ref == 'refs/heads/master' && github.event_name == 'push'
           run: terraform apply -auto-approve -input=false -parallelism=1 planfile #we are using the planfile we got from the output
           #in step with id plan
 
