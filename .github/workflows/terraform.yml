@@ -39,6 +39,10 @@ jobs:
           id: init #id can be any name it will used to build dependencies
           run: terraform init -backend-config="bucket=$BUCKET_TF_STATE"
 
+        - name: Terraform refresh
+          id: refresh
+          run: terraform refresh
+
         - name: Terraform format
           id: fmt
           run: terraform fmt -check
