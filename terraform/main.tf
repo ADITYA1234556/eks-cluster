@@ -29,6 +29,9 @@ module "eks" {
 
   cluster_name    = "my-cluster"
   cluster_version = "1.31"
+  endpoint_public_access  = true
+
+  public_access_cidrs = ["0.0.0.0/0"]
 
   cluster_addons = {
     coredns                = {}
