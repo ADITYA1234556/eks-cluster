@@ -17,7 +17,7 @@ module "eks" {
   control_plane_subnet_ids = ["subnet-0c2003a5adace7c1d", "subnet-04ae323c42e97e00b", "subnet-08f65fc44d3d2c23a"]
 
   # Enable public access to the API server endpoint
-  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access  = true
   cluster_endpoint_private_access = false
 
   # EKS Managed Node Group(s) with default configurations
