@@ -15,6 +15,11 @@ module "eks" {
   vpc_id                   = "vpc-0ede6ede1271b45cc"
   subnet_ids               = ["subnet-0f7e3694cf325b7b8", "subnet-0c0c75eca7acc5e53", "subnet-0ca2234f4bb858157"]
   control_plane_subnet_ids = ["subnet-0c2003a5adace7c1d", "subnet-04ae323c42e97e00b", "subnet-08f65fc44d3d2c23a"]
+
+  # Enable public access to the API server endpoint
+  cluster_endpoint_public_access = true
+  cluster_endpoint_private_access = false
+
   # EKS Managed Node Group(s) with default configurations
   eks_managed_node_group_defaults = {
     instance_types = ["m6i.large", "m5.large", "m5n.large", "m5zn.large", "t3.medium"]
