@@ -1,12 +1,12 @@
 name: "CICD IAC"
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - stage
     paths:
       - terraform/**
-      - #any folder or subfolder inside terraform/
   pull_request:
     branches:
       - main
