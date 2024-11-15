@@ -82,5 +82,5 @@ jobs:
 
 
         - name: Install ingress controller
-          if: steps.apply.outcome == 'success' && steps.getconfig.outcome == 'success'
+          if: steps.apply.outcome == 'success' && steps.getkubeconfig.outcome == 'success'
           run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.2/deploy/static/provider/aws/deploy.yaml --validate=false --v=8
