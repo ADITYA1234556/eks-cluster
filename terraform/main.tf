@@ -12,9 +12,9 @@ module "eks" {
     vpc-cni                = {}
   }
 
-  vpc_id                   = "vpc-0ede6ede1271b45cc"
-  subnet_ids               = ["subnet-0f7e3694cf325b7b8", "subnet-0c0c75eca7acc5e53", "subnet-0ca2234f4bb858157"]
-  control_plane_subnet_ids = ["subnet-0c2003a5adace7c1d", "subnet-04ae323c42e97e00b", "subnet-08f65fc44d3d2c23a"]
+  vpc_id                   = "vpc-04c99ef201256c70f"
+  subnet_ids               = ["subnet-06d63f443b5cec3af", "subnet-07fde5cc5ffb01580", "subnet-01e9eb9a0384143dd"]
+  control_plane_subnet_ids = ["subnet-0a9a06f6091ddf1c2", "subnet-04abd9417c325302a", "subnet-09faee3faf5c288d3"]
 
   # Enable public access to the API server endpoint
   cluster_endpoint_public_access  = true
@@ -23,14 +23,14 @@ module "eks" {
   # EKS Managed Node Group(s) with default configurations
   eks_managed_node_group_defaults = {
     instance_types = ["m6i.large", "m5.large", "m5n.large", "m5zn.large", "t3.medium"]
-    key_name       = "ADITYAOWNKEY" # Specify your key pair here
+    key_name       = "PERSONALACCOUNT" # Specify your key pair here
   }
 
   eks_managed_node_groups = {
     one = {
       ami_type       = "AL2_x86_64"
       instance_types = ["t3.medium"]
-      key_name       = "ADITYAOWNKEY" # Alternatively, specify the key pair for each group
+      key_name       = "PERSONALACCOUNT" # Alternatively, specify the key pair for each group
 
       min_size     = 1
       max_size     = 2
@@ -39,7 +39,7 @@ module "eks" {
     two = {
       ami_type       = "AL2_x86_64"
       instance_types = ["t3.medium"]
-      key_name       = "ADITYAOWNKEY" # Alternatively, specify the key pair for each group
+      key_name       = "PERSONALACCOUNT" # Alternatively, specify the key pair for each group
 
       min_size     = 1
       max_size     = 2
