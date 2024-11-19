@@ -35,9 +35,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "111-aditya-logs"
+    bucket = "11-aditya-bucket"
     key    = "terraform/terraform.tfstate"
-    region = "eu-west-3"
+    region = "eu-west-2"
   }
 
   required_version = "~> 1.3"
