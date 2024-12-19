@@ -86,3 +86,11 @@ jobs:
         - name: Install ingress controller
           if: steps.apply.outcome == 'success' && steps.getkubeconfig.outcome == 'success'
           run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.2/deploy/static/provider/aws/deploy.yaml --validate=false --v=8
+
+        - name: Terraform destroy
+          id: destroy
+          env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ env.AWS_REGION}}
+          run: terraform destroy -auto-approve
